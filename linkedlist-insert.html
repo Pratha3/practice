@@ -1,0 +1,30 @@
+<script>
+    class Node {
+        constructor(value) {
+            this.value = value
+            this.next = null
+        }
+    }
+    class LinkedList {
+        constructor() {
+            this.head = null
+        }
+        insertAtLast(value) {
+            var newNode = new Node(value)
+            if (this.head == null) {
+                this.head = newNode
+            } else {
+                var current = this.head
+                while (current.next) {
+                    current = current.next
+                }
+                current.next = newNode
+            }
+        }
+    }
+    var list = new LinkedList
+    list.insertAtLast(10)
+    list.insertAtLast(20)
+    list.insertAtLast(30)
+    console.log(list)
+</script>

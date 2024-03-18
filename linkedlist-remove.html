@@ -1,0 +1,70 @@
+<script>
+    class Node {
+        constructor(value) {
+            this.value = value
+            this.next = null
+        }
+    }
+    class LinkedList {
+        constructor() {
+            this.head = null
+        }
+        insertAtLast(value) {
+            var newNode = new Node(value)
+            if (this.head == null) {
+                this.head = newNode
+            } else {
+                var current = this.head
+                while (current.next) {
+                    current = current.next
+                }
+                current.next = newNode
+            }
+        }
+        insertAt(index, value) {
+            let newNode = new Node(value)
+            let current = this.head
+            if (index == 0) {
+                newNode.next = current
+                this.head = newNode
+            } else {
+                while (--index) {
+                    if (current.next != null) {
+                        current = current.next
+                    } else {
+                        console.log('no index found')
+                        return 'no index found'
+                    }
+                }
+                var temp = current.next
+                current.next = newNode
+                newNode.next = temp
+            }
+        }
+        removeAt(index) {
+            let nodes=this.head;
+            if (index === 0) {
+                if (nodes !== null) {
+                    nodes = nodes.next;
+                    this.Head = nodes;
+                } else
+                    throw console.error("index out of bound");
+                return;
+            }
+            while (--index) {
+                if (nodes.next !== null)
+                    nodes = nodes.next;
+                else
+                    throw error("index out of bound")
+            }
+            nodes.next = nodes.next.next;
+        }
+    }
+    var list = new LinkedList
+    list.insertAtLast(10)
+    list.insertAtLast(20)
+    list.insertAtLast(30)
+    list.insertAt(0,300)
+    list.removeAt(1)
+    console.log(list)
+</script>

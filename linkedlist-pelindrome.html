@@ -1,0 +1,51 @@
+<script>
+    class Node {
+        constructor(value) {
+            this.value = value
+            this.next = null
+        }
+    }
+
+    class LinkedList {
+        constructor() {
+            this.head = null
+        }
+
+        insertAtLast(value) {
+            var newNode = new Node(value)
+            if (this.head == null) {
+                this.head = newNode
+            } else {
+                var current = this.head
+                while (current.next) {
+                    current = current.next
+                }
+                current.next = newNode
+            }
+        }
+
+
+        isPalindrome() {
+            let values = [];
+            let current = this.head;
+            while (current !== null) {
+                values.push(current.value);
+                current = current.next;
+            }
+            for (let i = 0, j = values.length - 1; i < j; i++, j--) {
+                if (values[i] !== values[j]) {
+                    return 'is not pelindrome';
+                }
+            }
+
+            return 'is pelindrome';
+        }
+    }
+
+    var list = new LinkedList;
+    list.insertAtLast(10);
+    list.insertAtLast(20);
+    list.insertAtLast(10);
+    
+    console.log(list.isPalindrome());
+</script>

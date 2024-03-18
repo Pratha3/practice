@@ -1,0 +1,25 @@
+<script>
+    const BinarySearch = (arr, target) => {
+        var si = 0
+        var ei = arr.length - 1
+        while (si <= ei) {
+            var mid = Math.floor((si + ei) / 2)
+            if (arr[mid] == target) {
+                return { status: 'found', index: mid, number: arr[mid] };
+            } else if (arr[mid] < target) {
+                si = mid + 1
+            } else {
+                ei = mid - 1
+            }
+        }
+        return { status: 'not found' };
+    }
+    var arr = [6, 7, 9, 10, 11, 12]
+    var target = 9
+    var result = BinarySearch(arr, target);
+    if (result.status === 'found') {
+        console.log(`Found at index ${result.index}, Number: ${result.number}`);
+    } else {
+        console.log(result.status);
+    }
+</script>
